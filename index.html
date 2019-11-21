@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<title>BAGELS</title>
+		<!-- Mobile Specific Metas -->
+
+	    <!-- MOBILE: viewport stuff -->
+		<meta name="HandheldFriendly" content="True">
+		<meta name="MobileOptimized" content="320">
+	    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+
+		<!-- iOS -->
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-touch-fullscreen" content="yes">
+		<!-- TO DO: add this splash image -->
+		<link rel="apple-touch-startup-image" href="img/splash.jpg">
+		
+		<!-- iPhone X, Xs (1125px x 2436px) --> 
+		<link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" href="/img/splash-1125x2436.jpg"> 
+		<!-- TO DO: add this icon -->
+	    <link rel="apple-touch-icon" href="/img/icon.png" sizes="128x128">
+
+	    <!-- TO DO: add this later, start inline -->
+		<!-- <link rel="stylesheet" type="text/css" href="css/styles.css"> -->
+
+		<style>
+			html {
+				background: #f7f7f7;
+    			font-family: monospace;
+			}
+			body {
+				margin: 10%;
+			    background: #fff;
+			    border-radius: 14px;
+			    box-shadow: 0 0 90px rgba(0,0,0,0.08);
+			    padding-top: 10%;
+			}
+			.wrap {
+				margin: 0 10% 10%;
+			}
+			textarea {
+				height: 300px;
+				border: none;
+				width: 100%;
+				height: auto;
+				font-size: 28px;
+			}
+			textarea:focus {
+				outline: none;
+			}
+		</style>
+
+		<script src="src/js/jquery-2.2.4.min.js"></script>
+		<script src="src/js/autoresize.jquery.js"></script>
+
+		<script>
+			$(document).ready(function(){
+
+				$('textarea').autoResize().trigger('change.dynSiz');
+
+				function updateCount() {
+					let content = $('textarea').val();
+					let bagelCount = (content.match(/O/g) || []).length;
+					$('.bagel-count').text(bagelCount);
+					let doughnutCount = (content.match(/0/g) || []).length;
+					$('.doughnut-count').text(doughnutCount);
+				}
+
+				$('textarea').on('keyup',function(){
+					updateCount();
+				});
+
+				// Update content initially to populate count numbers
+				updateCount();
+
+			});
+		</script>
+	</head>
+
+	<body>
+		<div class="wrap">
+
+		<h1>BAGELS</h1>
+
+		<h3>RULES:</h3>
+		<p>~~~ add rules here ~~~</p>
+
+		<h4>Bagels (O's): <span class="bagel-count">0</span></h4>
+		<h4>Doughnuts (0's): <span class="doughnut-count">0</span></h4>
+
+		<textarea>OOOOOOOOOOO00OO0OOOO00OO00O00000OOOO00OO0OO0OOOO0OOOO00OOOOO0OOOO00OOO0OOOO0OOOOOOOO00OOOOO0OOOO00OOO00OO0OO0OOOO0OO0OOOO0OOOO0OOOO00OOO00OO0OO0OOOO0OOOO00OOOOO0OOOO00OOO00OOOO0OOOOOOOO00OOOOOOO0OOOO00OOO00OO0OO0OOOOO00OO0OO0OOOO0OOOO00OOOOO0OOOO00OOO00OOOO0OOOOOOOO0OOOOO0OOOOOOO00OOO00OO0OO0OOOO0OOOOO0OOOO0OOOOOOOO00OOO00OO0OO0OOOO0OOOO0OOOOO0OOOO00OOO00OOOO0OOOOOOOO00OOOOO0OOOO00OOO00OO0OO0OOOO0OOO0OOOOOOOO0OOOOOOOO0OOOOOOOOOOOO00OOOO0OOOOOOOO0OOOOOOOO0OOOO00OOO0OO0OOOOOOOO0OOOO0OOOO0OOOO0OOO00OO0OO0OOOOOOOO00OOOOO0OOOO00OOO00OOOOOOOOOOOO00OOOOO0OOOO00OOO0OOOO0OOOO0OOO00OO0OO0OOOO0OOOO00OOOOO0OOOO00OOO00OOOO0OOOOOOOO0OOOOOOOOO00OOO00OO0OO0OOOO0OO0OOOO0OOOO0OOOOOOO00OO0OO0OOOO0OOOO00OOOOO0OOOO0OOO00OOOO0OOOOOOOO00OOOOO0OOOO00OOO0OO0OO0OOOO0OO0OO0OOOOO0OOOOOOO00OO0OO0OOOO0OOOO00OOOOO0OOOOO</textarea>
+
+		</div><!-- end wrap -->
+
+	</body>
+
+</html>
